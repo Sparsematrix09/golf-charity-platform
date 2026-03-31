@@ -39,7 +39,7 @@ export async function POST(req: NextRequest) {
         const subscription = await stripe.subscriptions.retrieve(
           session.subscription || session.id,
           { expand: ['default_payment_method'] }
-        );
+        ) as any;
 
         let supabaseUUID = session.metadata?.supabaseUUID || session.client_reference_id;
         let planType = session.metadata?.planType;
